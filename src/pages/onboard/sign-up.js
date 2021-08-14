@@ -117,7 +117,7 @@ function SignUp() {
                     </form>
 
                     <div className={styles.terms}>
-                        By clicking the "Join for FREE" button you agree to Memorisely's <a href="/terms-of-service" target="_blank" class="tiny-link">Terms of Use</a> and <a href="/privacy-policy" target="_blank" class="tiny-link">Privacy Policy</a>.
+                        By clicking the "SIGN UP" button you agree to Memorisely's <a href="/terms-of-service" target="_blank" class="tiny-link">Terms of Use</a> and <a href="/privacy-policy" target="_blank" class="tiny-link">Privacy Policy</a>.
                     </div>
                 </div>
             </section>
