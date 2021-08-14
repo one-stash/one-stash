@@ -76,31 +76,11 @@ function SignIn() {
                     </h5>
 
                     <form>
-                        <div className={styles.input_container}>
-                            <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="First name" />
-                                <label>First name</label>
-                            </div>
-                        </div>
-
-                        <div className={styles.input_container}>
-                            <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="Last name" />
-                                <label>Last name</label>
-                            </div>
-                        </div>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
                                 <input name="name" type="text" placeholder="Email address" />
                                 <label>Email address</label>
-                            </div>
-                        </div>
-
-                        <div className={styles.input_container}>
-                            <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="Job role" />
-                                <label>Job role</label>
                             </div>
                         </div>
 
