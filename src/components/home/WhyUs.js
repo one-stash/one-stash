@@ -21,7 +21,7 @@ class WhyUs extends Component{
 
                             <div className={styles.why_content}>
                                 <div className={styles.title}>
-                                    Curious about what 1stash is all about...
+                                    Curious about what 1stash is all about?
                                 </div>
 
                                 <div className={styles.desc}>

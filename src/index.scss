@@ -14,6 +14,9 @@
   color: white;
 }
 
+body::-webkit-scrollbar {
+  width: 0;
+}
 
 html{
   scroll-behavior: smooth;
@@ -40,7 +43,7 @@ a {
     transition-property: opacity, color, background-color, transform, border;
 }
 
-h1 {
+h1,h2,h3,h4,h5,h6 {
    margin-block-start: 0em;
     margin-block-end: 0em;
 }
