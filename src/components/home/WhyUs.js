@@ -25,7 +25,7 @@ class WhyUs extends Component{
                                 </div>
 
                                 <div className={styles.desc}>
-                                    Assemble expert, diverse, agile, and scalable engineering teams on-demand to build and ship products quickly and efficiently.
+                                    A file management system for businesses & corporate organizations for employers and employees to collaborate, share and upload files.
                                 </div>
                             </div>
                             

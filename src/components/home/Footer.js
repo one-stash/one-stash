@@ -24,7 +24,7 @@ class Footer extends Component{
                                 </span>
 
                                 <p>
-                                    Remote teaching platform for creating engaging online classes anywhere, anytime. it's free and easy to use.
+                                    A file management system for businesses & corporate organizations for employers and employees to work, collaborate, share and upload files.
                                 </p>
                             </div>
 

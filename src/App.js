@@ -1,9 +1,13 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+// Homepage
 import OneShare from "./pages/home/index";
 
 // Onboard
 import SignIn from "./pages/onboard/sign-in.js";
 import SignUp from "./pages/onboard/sign-up.js";
+
+// Dashboard
 
 
 function App() {

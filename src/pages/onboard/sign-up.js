@@ -1,13 +1,46 @@
-import React, { useState } from "react"
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, Redirect } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
 import check from "../../assets/images/check.svg";
 
 import styles from "../../styles/onboard/sign_up.module.scss";
 
-function SignUp() {
-        
-    // const [active, setActive] = useState{false}
+import { connect } from 'react-redux'
+import { registerUser, setLoading, clearMsg } from '../../actions/authActions'
+import { url } from '../../config'
+
+const SignUp = ({
+	registerUser,
+	setLoading,
+	loading,
+	error_msg,
+	success_msg,
+	clearMsg,
+	userToken,
+}) => {
+	useEffect(() => {
+		clearMsg()
+	}, [])
+	const { register, handleSubmit, errors, reset } = useForm()
+	// submit function
+	// console.log(window.btoa('me.pariola@gmail.com'))
+	const onSubmit = (data) => {
+		setLoading()
+		const userData = {
+			first_name: data.fname,
+			last_name: data.lname,
+			email: data.email,
+			company_name: data.cname,
+			password: data.password,
+		}
+		// console.log(url.liveVerifyEmail)
+		registerUser(userData, reset)
+	}
+	if (userToken !== null) {
+		//'/username/dashboard/home'
+		return <Redirect to={url.dashHome} />
+    }
     
     return(
         <>
@@ -62,9 +95,11 @@ function SignUp() {
 
                 <div className={styles.form}>
                     <div className={styles.form_nav}>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
-                        </svg>
+                        <Link to="/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+                            </svg>
+                        </Link> 
 
                         <Link to="/sign-in">
                             Login
@@ -75,49 +110,124 @@ function SignUp() {
                         Join 1Stash for free
                     </h5>
 
-                    <form>
+                    <form method='post' onSubmit={handleSubmit(onSubmit)}>
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="First name" />
+                                <input name="fname" type="text" placeholder="First name" ref={register({
+								    required: 'first name is required',
+                                })} />
+
+                                {/* Frontend validation error::Username */}
+                                {errors.fname && (
+                                <small className={styles.errorMsg}>*{errors.fname.message}</small>
+                                )}
+
+                                {/* backend validation error::Username */}
+                                {error_msg !== null && error_msg.fname && (
+                                    <small className={styles.errorMsg}>*{error_msg.fname}</small>
+                                )}
                                 <label>First name</label>
                             </div>
                         </div>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="Last name" />
+                                <input name="lname" type="text" placeholder="Last name" ref={register({
+								    required: 'last name is required',
+                                })} />
+
+                                {/* Frontend validation error::Username */}
+                                {errors.lname && (
+                                <small className={styles.errorMsg}>*{errors.lname.message}</small>
+                                )}
+
+                                {/* backend validation error::Username */}
+                                {error_msg !== null && error_msg.lname && (
+                                    <small className={styles.errorMsg}>*{error_msg.lname}</small>
+                                )}
                                 <label>Last name</label>
                             </div>
                         </div>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="Email address" />
+                                <input name="email" type="email" placeholder="Email address" ref={register({
+								    required: 'email is required',
+                                })} />
+
+                                {/* Frontend validation error::Username */}
+                                {errors.email && (
+                                <small className={styles.errorMsg}>*{errors.email.message}</small>
+                                )}
+
+                                {/* backend validation error::Username */}
+                                {error_msg !== null && error_msg.email && (
+                                    <small className={styles.errorMsg}>*{error_msg.email}</small>
+                                )}
                                 <label>Email address</label>
                             </div>
                         </div>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="name" type="text" placeholder="Job role" />
-                                <label>Job role</label>
+                                <input name="cname" type="text" placeholder="Company name" ref={register({
+								    required: 'company name is required',
+                                })} />
+
+                                {/* Frontend validation error::Username */}
+                                {errors.cname && (
+                                <small className={styles.errorMsg}>*{errors.cname.message}</small>
+                                )}
+
+                                {/* backend validation error::Username */}
+                                {error_msg !== null && error_msg.cname && (
+                                    <small className={styles.errorMsg}>*{error_msg.cname}</small>
+                                )}
+                                <label>Company name</label>
                             </div>
                         </div>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="name" type="password" placeholder="Password" />
+                                <input name="password" type="password" placeholder="Password" ref={register({
+                                    required: 'password is required',
+                                    minLength: { value: 6, message: 'password is too short' },
+                                })} />
+
+                                {/* Frontend validation error::Username */}
+                                {errors.password && (
+                                <small className={styles.errorMsg}>*{errors.password.message}</small>
+                                )}
+
+                                {/* backend validation error::Username */}
+                                {error_msg !== null && error_msg.password && (
+                                    <small className={styles.errorMsg}>*{error_msg.password}</small>
+                                )}
                                 <label>Password</label>
                             </div>
                         </div>
 
-                        <button type="submit">
-                            Sign Up
-                        </button>
+                        {/*  */}
+						{loading ? (
+							<div className={styles.sendComp}>Loading</div>
+						) : error_msg === null && success_msg === null ? (
+							<button type='submit'>
+                                Sign Up
+                            </button>
+						) : error_msg !== null ? (
+							<>
+								<button type='submit'>
+                                    Sign Up
+                                </button>
+							</>
+						) : (
+							<div className={styles.sendSuccess}>{success_msg}</div>
+						)}
+						{/*  */}
                     </form>
 
                     <div className={styles.terms}>
-                        By clicking the "SIGN UP" button you agree to Memorisely's <a href="/terms-of-service" target="_blank" class="tiny-link">Terms of Use</a> and <a href="/privacy-policy" target="_blank" class="tiny-link">Privacy Policy</a>.
+                        By clicking the "SIGN UP" button you agree to 1stash's <a href="/terms-of-service" target="_blank" class="tiny-link">Terms of Use</a> and <a href="/privacy-policy" target="_blank" class="tiny-link">Privacy Policy</a>.
                     </div>
                 </div>
             </section>
@@ -125,4 +235,12 @@ function SignUp() {
     );
 }        
 
-export default SignUp;
+const mapStateToProps = (state) => ({
+	loading: state.authReducer.loading,
+	error_msg: state.authReducer.error_msg,
+	success_msg: state.authReducer.success_msg,
+	userToken: state.authReducer.userToken,
+})
+export default connect(mapStateToProps, { registerUser, setLoading, clearMsg })(
+	SignUp
+)

@@ -1,7 +1,7 @@
 .why_us {
     width: 100%;
     height: fit-content;
-    padding: 100px 0 100px;
+    padding: 100px 0 120px;
     display: grid;
     place-items: center;
     // background: #f9f9f9;
@@ -51,7 +51,7 @@
                 font-weight: 600;
                 line-height: 44px;
                 color: #333;
-                margin-bottom: 32px;
+                margin-bottom: 30px;
                 font-style: normal;
             }
 
@@ -67,7 +67,7 @@
         & .why_items {
             height: 550px;
             width: 100%;
-            margin-top: 50px;
+            margin-top: 70px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
