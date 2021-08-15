@@ -72,7 +72,7 @@ function SignIn() {
                     </div>
 
                     <h5 className={styles.h5}>
-                        Join 1Stash for free
+                        Yay! you came back.
                     </h5>
 
                     <form>
@@ -97,7 +97,7 @@ function SignIn() {
                     </form>
 
                     <div className={styles.terms}>
-                        By clicking the "SIGN UP" button you agree to Memorisely's <a href="/terms-of-service" target="_blank" class="tiny-link">Terms of Use</a> and <a href="/privacy-policy" target="_blank" class="tiny-link">Privacy Policy</a>.
+                        <a href="#0" target="_blank" class="tiny-link">Forgot Password?</a>.
                     </div>
                 </div>
             </section>
