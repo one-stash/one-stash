@@ -27,7 +27,7 @@ const SignUp = ({
 	// console.log(window.btoa('me.pariola@gmail.com'))
 	const onSubmit = (data) => {
 		setLoading()
-		const userData = {
+		const userData = { 
 			first_name: data.fname,
 			last_name: data.lname,
 			email: data.email,

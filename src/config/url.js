@@ -1,5 +1,5 @@
-// const app_url = 'http://127.0.0.1:3000/'
-const app_url = 'https://1stash.netlify.app/'
+const app_url = 'http://127.0.0.1:3000/'
+// const app_url = 'https://1stash.netlify.app/'
 
 export const url = {
 	// landingpage

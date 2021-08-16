@@ -108,7 +108,7 @@ const SignIn = ({
                         Yay! you came back.
                     </h5>
 
-                    <form>
+                    <form method='post' onSubmit={handleSubmit(onSubmit)}>
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>

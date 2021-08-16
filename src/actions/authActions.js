@@ -91,6 +91,7 @@ export const verifyEmail = (verifyData, reset) => async (dispatch) => {
 		})
 	}
 }
+
 export const loginUser = (userData, reset) => async (dispatch) => {
 	setLoading()
 	const options = {
@@ -123,6 +124,7 @@ export const loginUser = (userData, reset) => async (dispatch) => {
 		})
 	}
 }
+
 
 
 // ::::::::::::::::::::::::
