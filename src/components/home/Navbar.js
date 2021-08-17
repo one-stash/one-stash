@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import styles from "../styles/home/navbar.module.scss";
 
+import { url } from '../../config'
 class Navbar extends Component{   
 
     render(){
@@ -21,7 +22,7 @@ class Navbar extends Component{
                         
                         <ul className={styles.navList}>
                             <li>
-                                <Link to="/sign-up" className={styles.a}>Get started</Link>
+                                <Link to={url.signIn} className={styles.a}>Get started</Link>
                             </li>
                         </ul>
                     </div>

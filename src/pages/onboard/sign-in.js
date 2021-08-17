@@ -99,8 +99,8 @@ const SignIn = ({
                             </svg>
                         </Link>                        
 
-                        <Link to="/sign-up">
-                            Join
+                        <Link to="#0">
+                            Help?
                         </Link>
                     </div>
 

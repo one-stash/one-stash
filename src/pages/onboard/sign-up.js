@@ -28,10 +28,10 @@ const SignUp = ({
 	const onSubmit = (data) => {
 		setLoading()
 		const userData = { 
-			first_name: data.fname,
-			last_name: data.lname,
+			first_name: data.first_name,
+			last_name: data.last_name,
 			email: data.email,
-			company_name: data.cname,
+			company_name: data.company_name,
 			password: data.password,
 		}
 		// console.log(url.liveVerifyEmail)
@@ -101,7 +101,7 @@ const SignUp = ({
                             </svg>
                         </Link> 
 
-                        <Link to="/sign-in">
+                        <Link to="{url.signIn}">
                             Login
                         </Link>
                     </div>
@@ -113,18 +113,18 @@ const SignUp = ({
                     <form method='post' onSubmit={handleSubmit(onSubmit)}>
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="fname" type="text" placeholder="First name" ref={register({
+                                <input name="first_name" type="text" placeholder="First name" ref={register({
 								    required: 'first name is required',
                                 })} />
 
                                 {/* Frontend validation error::Username */}
-                                {errors.fname && (
-                                <small className={styles.errorMsg}>*{errors.fname.message}</small>
+                                {errors.first_name && (
+                                <small className={styles.errorMsg}>*{errors.first_name.message}</small>
                                 )}
 
                                 {/* backend validation error::Username */}
-                                {error_msg !== null && error_msg.fname && (
-                                    <small className={styles.errorMsg}>*{error_msg.fname}</small>
+                                {error_msg !== null && error_msg.first_name && (
+                                    <small className={styles.errorMsg}>*{error_msg.first_name}</small>
                                 )}
                                 <label>First name</label>
                             </div>
@@ -132,18 +132,18 @@ const SignUp = ({
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="lname" type="text" placeholder="Last name" ref={register({
+                                <input name="last_name" type="text" placeholder="Last name" ref={register({
 								    required: 'last name is required',
                                 })} />
 
                                 {/* Frontend validation error::Username */}
-                                {errors.lname && (
-                                <small className={styles.errorMsg}>*{errors.lname.message}</small>
+                                {errors.last_name && (
+                                <small className={styles.errorMsg}>*{errors.last_name.message}</small>
                                 )}
 
                                 {/* backend validation error::Username */}
-                                {error_msg !== null && error_msg.lname && (
-                                    <small className={styles.errorMsg}>*{error_msg.lname}</small>
+                                {error_msg !== null && error_msg.last_name && (
+                                    <small className={styles.errorMsg}>*{error_msg.last_name}</small>
                                 )}
                                 <label>Last name</label>
                             </div>
@@ -170,18 +170,18 @@ const SignUp = ({
 
                         <div className={styles.input_container}>
                             <div className={styles.input_content}>
-                                <input name="cname" type="text" placeholder="Company name" ref={register({
+                                <input name="company_name" type="text" placeholder="Company name" ref={register({
 								    required: 'company name is required',
                                 })} />
 
                                 {/* Frontend validation error::Username */}
-                                {errors.cname && (
-                                <small className={styles.errorMsg}>*{errors.cname.message}</small>
+                                {errors.company_name && (
+                                <small className={styles.errorMsg}>*{errors.company_name.message}</small>
                                 )}
 
                                 {/* backend validation error::Username */}
-                                {error_msg !== null && error_msg.cname && (
-                                    <small className={styles.errorMsg}>*{error_msg.cname}</small>
+                                {error_msg !== null && error_msg.company_name && (
+                                    <small className={styles.errorMsg}>*{error_msg.company_name}</small>
                                 )}
                                 <label>Company name</label>
                             </div>

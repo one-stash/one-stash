@@ -7,7 +7,7 @@ export const url = {
 	home: '/',
 
 	//onboard
-	signUp: '/onboard/sign-up',
+	signUp: '/onboard/admin/add-user',
 	signIn: '/onboard/sign-in',
 	//
 
