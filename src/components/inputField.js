@@ -66,10 +66,10 @@ class InputField extends Component{
                     
                     ?  
                     <section className={styles.inputContainer}>                            
-                        <section className={styles.input_content}>
+                        <div className={styles.input_content}>
                             <input type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} onChange={(e) => this.model(e)} />
-                            <label>{this.props.placeinner}</label>
-                        </section>
+                            <label>{this.props.placeinside}</label>
+                        </div>
 
                         <div className={styles.hideShow}>
                             <svg onClick={(e) => this.show(e)} className={styles.show} width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,10 +85,10 @@ class InputField extends Component{
                     :
 
                     <section className={styles.inputContainer}>
-                        <section className={styles.input_content}>
-                            <input value={this.props.val} name={this.props.name} type={this.props.type} placeholder={this.props.placeinside} onChange={(e) => this.model(e)}/>
-                            <label>{this.props.placeholder}</label>
-                        </section>
+                        <div className={styles.input_content}>
+                            <input value={this.props.val} name={this.props.name} type={this.props.type} placeholder={this.props.placeholder} onChange={(e) => this.model(e)}/>
+                            <label>{this.props.placeinside}</label>
+                        </div>
                     </section>
                 }
             </div>

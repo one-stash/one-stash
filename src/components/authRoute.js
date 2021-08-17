@@ -33,7 +33,7 @@ const AuthRoute = ({component: Component}, ...rest) => {
         <Route {...rest} render= {(props) => {
             if(approved===false && loading===false){
                 return <Redirect to={{
-                    pathname: "/",
+                    pathname: "/onboard/sign-in",
                     state: props.location
                 }}/>
             } 

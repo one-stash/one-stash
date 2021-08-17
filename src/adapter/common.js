@@ -35,10 +35,9 @@ export const swr = (hText) =>{
     })
 }
 
-const app_url = 'http://127.0.0.1:3000/'
 
-export const url = {
-	base: app_url,
+
+export const url = {	
 	home: '/',
 
 	//onboard
@@ -51,6 +50,6 @@ export const url = {
 }
 
 export const apiConfigs = {
-    "baseUrl": "https://web.elpisacademy.us/#/",
+    "baseUrl": "http://127.0.0.1:3000/",
     "apiUrl": "https://elpis.footyfansfc.com/api/"
 }

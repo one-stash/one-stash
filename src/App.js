@@ -9,8 +9,8 @@ import AuthRoute from './components/authRoute';
 import OneShare from "./pages/home/index.js";
 
 // Onboard
-import SignIn from "./pages/onboard/sign-in.js";
-import SignUp from "./pages/onboard/sign-up.js";
+import SignIn from "./pages/onboard/sign_in.js";
+import SignUp from "./pages/onboard/sign_up.js";
 
 // Dashboard
 import Home from "./pages/dashboard/home.js";
