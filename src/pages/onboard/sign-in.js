@@ -1,48 +1,68 @@
-import React, { useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import React, { Component } from 'react'
+import {callApi, e, swr, apiConfigs} from '../../adapter/common'
+import { Link } from 'react-router-dom'
+
+import InputField from '../../components/inputField'
+import Button from '../../components/button'
 
 import check from "../../assets/images/check.svg";
 
 import styles from "../../styles/onboard/sign_in.module.scss";
 
-import { connect } from 'react-redux'
-import { loginUser, setLoading, clearMsg } from '../../actions/authActions'
-import { url } from '../../config'
+class SignIn extends Component{
+    
+    constructor (props){
+        super(props)
 
-const SignIn = ({
-	loginUser,
-	setLoading,
-	error_msg,
-	loading,
-	success_msg,
-	user,
-	clearMsg,
-	userToken,
-}) => {
-	const { register, handleSubmit, errors, reset } = useForm()
-	useEffect(() => {
-		clearMsg()
-	}, [])
+        this.state = {
+            email: '',
+            password: '',
+            isLoading: false
+        }
+    }
+    componentDidMount(){
+        if(localStorage.user){
+            localStorage.removeItem('user')
+        }
+    }
+    model(e){
+        this.setState({
+            [e.name]: e.text
+        })
+    }
 
-	if (userToken !== null) {
-		//'/username/dashboard/home'
-		return <Redirect to={url.dashHome} />
-	}
+    async login(){
+        if(this.state.isLoading === true){
+            return
+        }
+        
+        if(this.state.email.trim()==='' || this.state.password.trim()===''){
+            return e("Please, ensure you have filled in all fields")
+        }
+        else{
+            this.setState({
+                isLoading : true
+            })
 
-	const onSubmit = (data) => {
-		setLoading()
-		const userData = {
-			email: data.email,
-			password: data.password,
-		}
-		loginUser(userData, reset)
-	}        
-    // const [active, setActive] = useState{false}
+            const res = await callApi('post', apiConfigs.apiUrl+'user/login.php', this.state)
+            if(res.status === 200){
+                localStorage.setItem('user', JSON.stringify(res.data))
+                this.props.history.push('/dashboard/home')
+            }
+            else{
+                swr(res.data.message)
+            }
 
-    return(
-        <>
-            <section className={styles.sign_in}>
+            this.setState({
+                isLoading : false
+            })
+        }
+    }
+
+    render(){
+        return(
+            <div>
+                <section className={styles.sign_in}>
                 <div className={styles.info}>
                     <div className={styles.info_nav}>
                         <Link to="/">back</Link>
@@ -108,51 +128,14 @@ const SignIn = ({
                         Yay! you came back.
                     </h5>
 
-                    <form method='post' onSubmit={handleSubmit(onSubmit)}>
+                    <form>
 
-                        <div className={styles.input_container}>
-                            <div className={styles.input_content}>
-                                <input name="email" type="email" placeholder="Email address" ref={register({
-								    required: 'email is Required',
-                                })} />
-                                {errors.email && (
-                                    <small className={styles.errorMsg}>*{errors.email.message}</small>
-                                )}
-                                <label>Email address</label>
-                            </div>
-                        </div>
-
-                        <div className={styles.input_container}>
-                            <div className={styles.input_content}>
-                                <input name="name" type="password" placeholder="Password" ref={register({
-								    required: 'password is required',
-								    minLength: { value: 6, message: 'password is too short' },
-                                })} />
-                                {errors.password && (
-							        <small className={styles.errorMsg}>*{errors.password.message}</small>
-						        )}
-                                <label>Password</label>
-                            </div>
-                        </div>
-
-                        {/*  */}
-						{loading ? (
-							<div className={styles.sendComp}>Loading</div>
-						) : error_msg === null && success_msg === null ? (
-							<button type='submit'>
-                                Sign In
-                            </button>
-						) : error_msg !== null ? (
-							<>
-                                <small className={styles.errorMsg}> {error_msg} </small>
-								<button type='submit'>
-                                    Sign In
-                                </button>
-							</>
-						) : (
-							<div className={styles.sendSuccess}>{success_msg}</div>
-						)}
-						{/*  */}
+                        <InputField type="email" placeholder="Email address" placeinner="Email address"  name="email" inputValue={e => this.model(e)} />
+                            
+                        <InputField type="password" name="password" placeholder="Password" placeinner="Password" inputValue={e => this.model(e)} />
+                        
+                        <Button onClick={() => this.login()} isLoading={this.state.isLoading} text="SIGN IN"/>
+                        
                     </form>
 
                     <div className={styles.terms}>
@@ -160,17 +143,10 @@ const SignIn = ({
                     </div>
                 </div>
             </section>
-        </>
-    );
-}        
+        </div>
+        )
+    }
+}
+     
 
-const mapStateToProps = (state) => ({
-	loading: state.authReducer.loading,
-	error_msg: state.authReducer.error_msg,
-	success_msg: state.authReducer.success_msg,
-	user: state.authReducer.user,
-	userToken: state.authReducer.userToken,
-})
-export default connect(mapStateToProps, { loginUser, setLoading, clearMsg })(
-	SignIn
-)
+export default SignIn

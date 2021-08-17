@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import styles from "../styles/home/navbar.module.scss";
 
-import { url } from '../../config'
+import { url } from '../../adapter/common'
 class Navbar extends Component{   
 
     render(){

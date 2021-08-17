@@ -1,11 +1,9 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { store, persistor } from './store'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import { PersistGate } from 'redux-persist/integration/react'
 
 // 
-import { url } from './config'
+import { url } from './adapter/common';
+import AuthRoute from './components/authRoute';
 
 // Homepage
 import OneShare from "./pages/home/index.js";
@@ -22,23 +20,19 @@ import Home from "./pages/dashboard/home.js";
 
 function App() {
   return (
-    <Provider store={store}>
-			<PersistGate persistor={persistor}>
-				<Router>
-					<Switch>
-            {/* */}
-            <Route path="/" exact component={OneShare} />
+    <Router>
+      <Switch>
+        {/* */}
+          <Route path="/" exact component={OneShare} />
             
-            {/* onboard route*/}
-            <Route path={url.signIn} exact component={SignIn} />
-						<Route path={url.signUp} exact component={SignUp} />        
+          {/* onboard route*/}
+          <Route path={url.signIn} exact component={SignIn} />
+					<Route path={url.signUp} exact component={SignUp} />        
             
-            {/* dashboard route */}
-            <Route path={url.dashHome} exact component={Home} />  
-					</Switch>
-				</Router>
-			</PersistGate>
-		</Provider>
+          {/* dashboard route */}
+          <AuthRoute path={url.dashHome} exact component={Home} />  
+      </Switch>
+    </Router> 
   );
 }
 

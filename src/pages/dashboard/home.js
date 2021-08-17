@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../components/dashboard/header";
-import { url } from '../../config'
+import {url} from '../../adapter/common';
 
 import styles from "../../styles/dashboard/home.module.scss";
 
