@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import {HashRouter as Router, Switch, Route} from 'react-router-dom' 
 
 // 
 import { url } from './adapter/common';
@@ -11,9 +11,11 @@ import OneShare from "./pages/home/index.js";
 // Onboard
 import SignIn from "./pages/onboard/sign_in.js";
 import SignUp from "./pages/onboard/sign_up.js";
+import AdminEntry from "./pages/onboard/admin_entry.js";
 
 // Dashboard
 import Home from "./pages/dashboard/home.js";
+import AdminHome from "./pages/dashboard/admin_home.js";
 
 // Dashboard
 
@@ -28,9 +30,11 @@ function App() {
           {/* onboard route*/}
           <Route path={url.signIn} exact component={SignIn} />
 					<Route path={url.signUp} exact component={SignUp} />        
+					<Route path={url.aEntry} exact component={AdminEntry} />        
             
           {/* dashboard route */}
           <AuthRoute path={url.dashHome} exact component={Home} />  
+          <Route path={url.adminHome} exact component={AdminHome} />  
       </Switch>
     </Router> 
   );

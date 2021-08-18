@@ -43,10 +43,12 @@ export const url = {
 	//onboard
 	signUp: '/onboard/admin/add-user',
     signIn: '/onboard/sign-in',
+    aEntry: '/onboard/admin-entry',
     //
 	
 	//1:dashboard home
 	dashHome: '/dashboard/home',
+	adminHome: '/dashboard/admin/home',
 }
 
 export const apiConfigs = {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {callApi, e, swr, apiConfigs} from '../../adapter/common'
+import {callApi, e, swr, apiConfigs, url} from '../../adapter/common'
 import { Link } from 'react-router-dom'
 
 import InputField from '../../components/inputField'
@@ -119,8 +119,8 @@ class SignIn extends Component{
                             </svg>
                         </Link>                        
 
-                        <Link to="#0">
-                            Help?
+                            <Link to={url.aEntry}>
+                            Admin entry
                         </Link>
                     </div>
 

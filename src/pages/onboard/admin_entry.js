@@ -1,55 +1,53 @@
 import React, { Component } from 'react'
-import {callApi, s, e, swr, apiConfigs, url} from '../../adapter/common'
+import {callApi, e, swr, apiConfigs, url} from '../../adapter/common'
 import { Link } from 'react-router-dom'
 
 import InputField from '../../components/inputField'
-import ButtonS from '../../components/buttons.js'
+import Button from '../../components/button'
 
 import check from "../../assets/images/check.svg";
 
-import styles from "../../styles/onboard/sign_up.module.scss";
+import styles from "../../styles/onboard/sign_in.module.scss";
 
-class SignUp extends Component{
+class AdminEntry extends Component{
     
-   constructor (props){
+    constructor (props){
         super(props)
 
         this.state = {
-            first_name: '',
-            last_name: '',
             email: '',
-            job_role: '',
             password: '',
             isLoading: false
         }
     }
-    modelSelect(e){
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    componentDidMount(){
+        if(localStorage.user){
+            localStorage.removeItem('user')
+        }
     }
     model(e){
         this.setState({
             [e.name]: e.text
         })
     }
-    async signup(){
+
+    async login(){
         if(this.state.isLoading === true){
             return
         }
         
-        if(this.state.first_name.trim()==='' || this.state.last_name.trim()==='' || this.state.email.trim()==='' || this.state.job_role.trim()==='' || this.state.password.trim()==='' || this.state.school===''){
-            return e("Please, ensure you have filled in all the fields")
+        if(this.state.email.trim()==='' || this.state.password.trim()===''){
+            return e("Please, ensure you have filled in all fields")
         }
         else{
             this.setState({
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'user/register.php', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'user/login.php', this.state)
             if(res.status === 200){
-                s(res.data.message + " Proceed to Login")
-                this.props.history.push('/onboard/sign-in')
+                localStorage.setItem('user', JSON.stringify(res.data))
+                this.props.history.push('/dashboard/admin/home')
             }
             else{
                 swr(res.data.message)
@@ -64,7 +62,7 @@ class SignUp extends Component{
     render(){
         return(
             <div>
-                <section className={styles.sign_up}>
+                <section className={styles.sign_in}>
                 <div className={styles.info}>
                     <div className={styles.info_nav}>
                         <Link to="/">back</Link>
@@ -122,32 +120,26 @@ class SignUp extends Component{
                         </Link>                        
 
                         <Link to={url.signIn}>
-                            Login
+                            User entry
                         </Link>
                     </div>
 
                     <h5 className={styles.h5}>
-                        Add your employee.
+                        Login as an admin!
                     </h5>
 
                     <form>
-                            
-                        <InputField type="text" name="first_name" placeholder="First name" placeinside="First name" inputValue={e => this.model(e)} />
-                            
-                        <InputField type="text" name="last_name" placeholder="Last name" placeinside="Last name" inputValue={e => this.model(e)} />
-                            
-                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="email" inputValue={e => this.model(e)} />  
 
-                        <InputField type="text" name="job_role" placeholder="Job role" placeinside="Job role" inputValue={e => this.model(e)} />
+                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="email" inputValue={e => this.model(e)} />
                             
-                        <InputField type="password" name="password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />                       
+                        <InputField type="password" name="password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />
                         
-                        <ButtonS onClick={() => this.signup()} isLoading={this.state.isLoading} text="SIGN UP"/>
+                        <Button onClick={() => this.login()} isLoading={this.state.isLoading} text="SIGN IN"/>
                         
                     </form>
 
                     <div className={styles.terms}>
-                        By clicking the "SIGN UP" button you agree to 1Stash's <a href="#0" target="_blank">Terms of Use</a> and <a href="#0" target="_blank">Privacy Policy</a>.
+                        <a href="#0" target="_blank" class="tiny-link">Forgot Password?</a>.
                     </div>
                 </div>
             </section>
@@ -157,4 +149,4 @@ class SignUp extends Component{
 }
      
 
-export default SignUp
+export default AdminEntry
