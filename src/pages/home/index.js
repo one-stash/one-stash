@@ -7,7 +7,6 @@ import WhyUs from '../../components/home/WhyUs'
 import Footer from '../../components/home/Footer'
 
 
-import styles from '../../styles/home/index.module.scss'
 
 class Home extends Component{
 

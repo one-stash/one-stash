@@ -45,7 +45,7 @@ class Footer extends Component{
                                 </h3>
 
                                 <ul className={styles.Flist}>
-                                    <li><a href="mailto:hello@tryklas.com">hello@tryklas.com</a></li>
+                                    <li><a href="mailto:my.onestash@gmail.com">my.stash@gmail.com</a></li>
                                 </ul>
                             </div>
 

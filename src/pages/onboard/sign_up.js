@@ -38,7 +38,7 @@ class SignUp extends Component{
             return
         }
         
-        if(this.state.first_name.trim()==='' || this.state.last_name.trim()==='' || this.state.email.trim()==='' || this.state.job_role.trim()==='' || this.state.password.trim()==='' || this.state.school===''){
+        if(this.state.first_name.trim()==='' || this.state.last_name.trim()==='' || this.state.email.trim()==='' || this.state.job_role.trim()==='' || this.state.password.trim()===''){
             return e("Please, ensure you have filled in all the fields")
         }
         else{
@@ -46,7 +46,7 @@ class SignUp extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'user/register.php', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/AddUser.cs', this.state)
             if(res.status === 200){
                 s(res.data.message + " Proceed to Login")
                 this.props.history.push('/onboard/sign-in')
@@ -130,7 +130,7 @@ class SignUp extends Component{
                         Add your employee.
                     </h5>
 
-                    <form>
+                    <div className={styles.form_ic}>
                             
                         <InputField type="text" name="first_name" placeholder="First name" placeinside="First name" inputValue={e => this.model(e)} />
                             
@@ -144,7 +144,7 @@ class SignUp extends Component{
                         
                         <ButtonS onClick={() => this.signup()} isLoading={this.state.isLoading} text="SIGN UP"/>
                         
-                    </form>
+                    </div>
 
                     <div className={styles.terms}>
                         By clicking the "SIGN UP" button you agree to 1Stash's <a href="#0" target="_blank">Terms of Use</a> and <a href="#0" target="_blank">Privacy Policy</a>.

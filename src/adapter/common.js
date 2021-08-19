@@ -47,11 +47,11 @@ export const url = {
     //
 	
 	//1:dashboard home
-	dashHome: '/dashboard/home',
+	dashHome: '/dashboard/user/home',
 	adminHome: '/dashboard/admin/home',
 }
 
 export const apiConfigs = {
-    "baseUrl": "http://127.0.0.1:3000/",
+    "baseUrl": "http://127.0.0.1:3000/#/",
     "apiUrl": "https://onestashapi.azurewebsites.net/api/"
 }

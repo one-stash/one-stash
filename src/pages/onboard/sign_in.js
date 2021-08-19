@@ -44,10 +44,10 @@ class SignIn extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'user/login.php', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/Login.cs', this.state)
             if(res.status === 200){
                 localStorage.setItem('user', JSON.stringify(res.data))
-                this.props.history.push('/dashboard/home')
+                this.props.history.push('/dashboard/user/home')
             }
             else{
                 swr(res.data.message)
@@ -128,7 +128,7 @@ class SignIn extends Component{
                         Yay! you came back.
                     </h5>
 
-                    <form>
+                    <div className={styles.form_ic}>
 
                         <InputField type="email" placeholder="Email address" placeinside="Email address"  name="email" inputValue={e => this.model(e)} />
                             
@@ -136,7 +136,7 @@ class SignIn extends Component{
                         
                         <Button onClick={() => this.login()} isLoading={this.state.isLoading} text="SIGN IN"/>
                         
-                    </form>
+                    </div>
 
                     <div className={styles.terms}>
                         <a href="#0" target="_blank" class="tiny-link">Forgot Password?</a>.

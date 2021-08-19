@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {callApi, s, e, swr, apiConfigs, url} from '../../adapter/common'
-import Header from "../../components/dashboard/header";
 import InputField from '../../components/inputField';
 import Buttona from '../../components/buttona';
 
@@ -88,7 +87,6 @@ class AdminHome extends Component{
         return(
             <div>
                     <div className="content-container">
-        {/*<Header />*/}
                     <div className="content">
 
                         <div className={styles.wrapper}>

@@ -38,10 +38,10 @@ class WhyUs extends Component{
 
                                         <div className={ styles._iContent}>
                                             <div className={styles.title}>
-                                                World class team
+                                                Multipurpose
                                             </div>
                                             <div className={styles.desc}>
-                                                Engineers at Enyata are technology leaders and domain experts in their fields.
+                                                1Stash can be used by any employer or employee in a business or corporate organization.
                                             </div>
                                         </div>
                                     </div>
@@ -53,10 +53,10 @@ class WhyUs extends Component{
 
                                         <div className={ styles._iContent}>
                                             <div className={styles.title}>
-                                                Agile culture
+                                                Agile feature
                                             </div>
                                             <div className={styles.desc}>
-                                                Design thinking and agile principles are at the core of how our teams operate.
+                                               1Stash gives full access to employers or employees to collaborate on office files or sensitive documents.
                                             </div>
                                         </div>
                                     </div>
@@ -70,10 +70,10 @@ class WhyUs extends Component{
 
                                         <div className={ styles._iContent}>
                                             <div className={styles.title}>
-                                                Scalable teams
+                                                Your stash
                                             </div>
                                             <div className={styles.desc}>
-                                                Augment your teams with our on-demand, high-quality engineering teams to build at scale.
+                                                1Stash gives a cool grid arrangement of every of your uploaded files in your stash.
                                             </div>
                                         </div>
                                     </div>
@@ -85,10 +85,10 @@ class WhyUs extends Component{
 
                                         <div className={ styles._iContent}>
                                             <div className={styles.title}>
-                                                Successful, diverse teams
+                                                Free tool
                                             </div>
                                             <div className={styles.desc}>
-                                                Our teams benefit from the compounding effect of deep expertise and varied experience.
+                                                1Stash is free and easy to use,work, collaborate, share and upload files - In between Microsoft 365.
                                             </div>
                                         </div>
                                     </div>
