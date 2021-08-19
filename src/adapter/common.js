@@ -53,5 +53,5 @@ export const url = {
 
 export const apiConfigs = {
     "baseUrl": "http://127.0.0.1:3000/",
-    "apiUrl": "https://elpis.footyfansfc.com/api/"
+    "apiUrl": "https://onestashapi.azurewebsites.net/api/"
 }
