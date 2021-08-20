@@ -79,32 +79,32 @@ class AdminEntry extends Component{
                         <div className={styles.features}>
                             <img src={check} alt="" />
                             <div className={styles.text}>
-                                <h3>Join 3,200+ Designers</h3>
-                                <p>Connect with over 3,200+ UX/UI designers</p>
+                                <h3>Multipurpose</h3>
+                                <p>Made for every employer and employee. In between Microsoft 365.</p>
                             </div>
                         </div>
 
                         <div className={styles.features}>
                             <img src={check} alt="" />
                             <div className={styles.text}>
-                                <h3>Join 3,200+ Designers</h3>
-                                <p>Connect with over 3,200+ UX/UI designers</p>
+                                <h3>Agile feature</h3>
+                                <p>Made for teams to work, share and collaborate.</p>
                             </div>
                         </div>
 
                         <div className={styles.features}>
                             <img src={check} alt="" />
                             <div className={styles.text}>
-                                <h3>Join 3,200+ Designers</h3>
-                                <p>Connect with over 3,200+ UX/UI designers</p>
+                                <h3>Your stash</h3>
+                                <p>Cool grid arrangement of every of your uploaded files. </p>
                             </div>
                         </div>
 
                         <div className={styles.features}>
                             <img src={check} alt="" />
                             <div className={styles.text}>
-                                <h3>Join 3,200+ Designers</h3>
-                                <p>Connect with over 3,200+ UX/UI designers</p>
+                                <h3>Free tool</h3>
+                                <p>Made with love from 1stash, free and easy to use.</p>
                             </div>
                         </div>
                         

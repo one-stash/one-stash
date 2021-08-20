@@ -30,7 +30,7 @@ function App() {
           {/* onboard route*/}
           <Route path={url.signIn} exact component={SignIn} />
 					<Route path={url.signUp} exact component={SignUp} />        
-					<AuthRoute path={url.aEntry} exact component={AdminEntry} />        
+					<Route path={url.aEntry} exact component={AdminEntry} />        
             
           {/* dashboard route */}
           <AuthRoute path={url.dashHome} exact component={Home} />  
