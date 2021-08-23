@@ -15,7 +15,7 @@ class AdminHome extends Component{
         let user = JSON.parse(localStorage.user)
         this.state = {
             file_name: '',            
-            file_image: '',
+            file_folder: '',
             user: user,
             isLoading: false
         }
@@ -25,7 +25,7 @@ class AdminHome extends Component{
         if(this.state.isLoading === true){
             return
         }
-        if(this.state.file_name.trim()==='' || this.state.file_image.trim()===''){
+        if(this.state.file_name.trim()==='' || this.state.file_folder.trim()===''){
             return e("Please, ensure you have filled in all fields")
         }
         else{
@@ -35,7 +35,7 @@ class AdminHome extends Component{
 
             const dataObj = new FormData()
             dataObj.append('file_name', this.state.file_name)
-            dataObj.append('file_image', this.state.file_image)
+            dataObj.append('file_folder', this.state.file_folder)
             dataObj.append('user_id', this.state.user.id)
             
             const res = await callApi('post', apiConfigs.apiUrl+'class/create.php', dataObj)
@@ -67,9 +67,9 @@ class AdminHome extends Component{
         }
     }
 
-    setImg(e){
+    setFold(e){
         this.setState({
-            file_image: e.target.files[0]
+            file_folder: e.target.files[0]
         })
     }
     modelOther(e){
@@ -124,7 +124,7 @@ class AdminHome extends Component{
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
                                         </svg>
                                         
-                                        <input type="file" name="file_image" className={styles.file} />
+                                        <input type="file" name="file_folder" className={styles.file} />
                                         </label>
                                     </div>
                                     
@@ -206,6 +206,7 @@ class AdminHome extends Component{
                                             </svg>
                                         </span>
                                     </div>
+
                                     <div className={styles.folder}>
                                         <h3>
                                             Stash 1.
@@ -217,6 +218,19 @@ class AdminHome extends Component{
                                             </svg>
                                         </span>
                                     </div>
+
+                                    <div className={styles.folder}>
+                                        <h3>
+                                            Stash 1.
+                                        </h3>
+                                        
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>  
@@ -229,3 +243,8 @@ class AdminHome extends Component{
 }
 
 export default AdminHome;
+
+
+
+
+                                  

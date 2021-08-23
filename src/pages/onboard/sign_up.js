@@ -46,13 +46,14 @@ class SignUp extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/AddUser.cs', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/AddUser', this.state)
             if(res.status === 200){
                 s(res.data.message + " Proceed to Login")
                 this.props.history.push('/onboard/sign-in')
             }
             else{
-                swr(res.data.message)
+                // swr(res.data.message)
+                swr("Please, fill in the required fields")
             }
 
             this.setState({

@@ -44,14 +44,14 @@ class AdminEntry extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/admin.cs', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/admin', this.state)
             if(res.status === 200){
                 localStorage.setItem('user', JSON.stringify(res.data))
                 this.props.history.push('/dashboard/admin/home')
             }
             else{
-                swr(res.data.message)
-            }
+                swr("Please, contact administrator")
+            } 
 
             this.setState({
                 isLoading : false

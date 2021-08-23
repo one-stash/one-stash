@@ -28,7 +28,7 @@ const AuthRoute = ({component: Component}, ...rest) => {
       }
       req()
     }, []);
-
+    
     return (
         <Route {...rest} render= {(props) => {
             if(approved===false && loading===false){

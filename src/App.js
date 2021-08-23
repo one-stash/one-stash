@@ -29,12 +29,12 @@ function App() {
             
           {/* onboard route*/}
           <Route path={url.signIn} exact component={SignIn} />
-					<Route path={url.signUp} exact component={SignUp} />        
+					<AuthRoute path={url.signUp} exact component={SignUp} />        
 					<Route path={url.aEntry} exact component={AdminEntry} />        
             
           {/* dashboard route */}
           <AuthRoute path={url.dashHome} exact component={Home} />  
-          <AuthRoute path={url.adminHome} exact component={AdminHome} />  
+          <Route path={url.adminHome} exact component={AdminHome} />  
       </Switch>
     </Router> 
   );

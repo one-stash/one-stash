@@ -44,7 +44,7 @@ class SignIn extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/Login.cs', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/Login', this.state)
             if(res.status === 200){
                 localStorage.setItem('user', JSON.stringify(res.data))
                 this.props.history.push('/dashboard/user/home')
@@ -119,7 +119,7 @@ class SignIn extends Component{
                             </svg>
                         </Link>                        
 
-                            <Link to={url.aEntry}>
+                        <Link to={url.aEntry}>
                             Admin entry
                         </Link>
                     </div>
