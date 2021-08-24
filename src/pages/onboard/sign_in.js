@@ -31,7 +31,7 @@ class SignIn extends Component{
         })
     }
 
-    async login(){
+    async userLogin(){
         if(this.state.isLoading === true){
             return
         }
@@ -134,7 +134,7 @@ class SignIn extends Component{
                             
                         <InputField type="password" name="password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />
                         
-                        <Button onClick={() => this.login()} isLoading={this.state.isLoading} text="SIGN IN"/>
+                        <Button onClick={() => this.userLogin()} isLoading={this.state.isLoading} text="SIGN IN"/>
                         
                     </div>
 
