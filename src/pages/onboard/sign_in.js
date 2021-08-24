@@ -36,7 +36,7 @@ class SignIn extends Component{
             return
         }
         
-        if(this.state.email.trim()==='' || this.state.password.trim()===''){
+        if(this.state.Email.trim()==='' || this.state.Password.trim()===''){
             return e("Please, ensure you have filled in all fields")
         }
         else{
