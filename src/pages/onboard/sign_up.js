@@ -15,11 +15,11 @@ class SignUp extends Component{
         super(props)
 
         this.state = {
-            first_name: '',
-            last_name: '',
-            email: '',
-            job_role: '',
-            password: '',
+            FirstName: '',
+            LastName: '',
+            Email: '',
+            JobRole: '',
+            Password: '',
             isLoading: false
         }
     }
@@ -38,7 +38,7 @@ class SignUp extends Component{
             return
         }
         
-        if(this.state.first_name.trim()==='' || this.state.last_name.trim()==='' || this.state.email.trim()==='' || this.state.job_role.trim()==='' || this.state.password.trim()===''){
+        if(this.state.FirstName.trim()==='' || this.state.LastName.trim()==='' || this.state.Email.trim()==='' || this.state.JobRole.trim()==='' || this.state.Password.trim()===''){
             return e("Please, ensure you have filled in all the fields")
         }
         else{
@@ -48,7 +48,7 @@ class SignUp extends Component{
 
             const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/AddUser', this.state)
             if(res.status === 200){
-                s(res.data.message + " Proceed to Login")
+                s("Proceed to Login")
                 this.props.history.push('/onboard/sign-in')
             }
             else{
@@ -133,15 +133,15 @@ class SignUp extends Component{
 
                     <div className={styles.form_ic}>
                             
-                        <InputField type="text" name="first_name" placeholder="First name" placeinside="First name" inputValue={e => this.model(e)} />
+                        <InputField type="text" name="FirstName" placeholder="First name" placeinside="First name" inputValue={e => this.model(e)} />
                             
-                        <InputField type="text" name="last_name" placeholder="Last name" placeinside="Last name" inputValue={e => this.model(e)} />
+                        <InputField type="text" name="LastName" placeholder="Last name" placeinside="Last name" inputValue={e => this.model(e)} />
                             
-                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="email" inputValue={e => this.model(e)} />  
+                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="Email" inputValue={e => this.model(e)} />  
 
-                        <InputField type="text" name="job_role" placeholder="Job role" placeinside="Job role" inputValue={e => this.model(e)} />
+                        <InputField type="text" name="JobRole" placeholder="Job role" placeinside="Job role" inputValue={e => this.model(e)} />
                             
-                        <InputField type="password" name="password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />                       
+                        <InputField type="password" name="Password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />                       
                         
                         <ButtonS onClick={() => this.signup()} isLoading={this.state.isLoading} text="SIGN UP"/>
                         

@@ -38,6 +38,11 @@
 
                 & span {
                     color: #6C7884;
+                    position: relative;
+
+                    & h5 {
+                      position: absolute !important;
+                    }
 
                     & svg {
                         height: 25px;  
@@ -280,4 +285,11 @@
         }
     }
 }
+
+
+
+
+// h5 {
+//     background: #168AE6 !important;    
+// }
 

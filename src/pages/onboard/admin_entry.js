@@ -15,8 +15,8 @@ class AdminEntry extends Component{
         super(props)
 
         this.state = {
-            email: '',
-            password: '',
+            Email: '',
+            Password: '',
             isLoading: false
         }
     }
@@ -36,7 +36,7 @@ class AdminEntry extends Component{
             return
         }
         
-        if(this.state.email.trim()==='' || this.state.password.trim()===''){
+        if(this.state.Email.trim()==='' || this.state.Password.trim()===''){
             return e("Please, ensure you have filled in all fields")
         }
         else{
@@ -130,9 +130,9 @@ class AdminEntry extends Component{
 
                     <div className={styles.form_ic}>
 
-                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="email" inputValue={e => this.model(e)} />
+                        <InputField type="email" placeholder="Email address" placeinside="Email address"  name="Email" inputValue={e => this.model(e)} />
                             
-                        <InputField type="password" name="password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />
+                        <InputField type="password" name="Password" placeholder="Password" placeinside="Password" inputValue={e => this.model(e)} />
                         
                         <Button onClick={() => this.adminLogin()} isLoading={this.state.isLoading} text="SIGN IN"/>
                         
