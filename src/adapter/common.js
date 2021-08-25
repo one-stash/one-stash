@@ -54,5 +54,6 @@ export const url = {
 export const apiConfigs = {
     "baseUrl": "http://1stash.netlify.app/#/",
     // "baseUrl": "http://localhost:3000/#/",
-    "apiUrl": "https://onestashapi.azurewebsites.net/api/"
+    "apiUrl": "https://onestashapi.azurewebsites.net/api/",
+    "apiUp": "https://onestashapi.azurewebsites.net/api/"
 }

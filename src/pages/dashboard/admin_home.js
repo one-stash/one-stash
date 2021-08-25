@@ -9,7 +9,7 @@ import styles from "../../styles/dashboard/home.module.scss";
 
 class AdminHome extends Component{
     
-/*   constructor (props){
+constructor (props){
         super(props)
 
         let user = JSON.parse(localStorage.user)
@@ -26,7 +26,7 @@ class AdminHome extends Component{
             return
         }
         if(this.state.file_name.trim()==='' || this.state.file_folder.trim()===''){
-            return e("Please, ensure you have filled in all fields")
+            return e("Please, ensure you've uploaded a file")
         }
         else{
             this.setState({
@@ -38,27 +38,15 @@ class AdminHome extends Component{
             dataObj.append('file_folder', this.state.file_folder)
             dataObj.append('user_id', this.state.user.id)
             
-            const res = await callApi('post', apiConfigs.apiUrl+'class/create.php', dataObj)
+            const res = await callApi('post', apiConfigs.apiUp+'upload', dataObj)
             if(res.status===201){
                 this.setState({
                     dats: res.data.result
                 })
-
-                 if(this.state.dats){
-                    let text = document.getElementById('copySection')
-                    var range = document.createRange();
-                    range.selectNode(text);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                    
-                    navigator.clipboard.writeText(window.getSelection())
-                    
-                    s(res.data.message + ' The Invitation details have been copied to your clipboard')
-                    this.props.history.push('/all-classes')
-                }
+                s("Your file has been uploaded successfully")
             }
             else{
-                swr(res.data.message)
+                swr("Please, you'll have to upload a file")
             }
 
             this.setState({
@@ -72,16 +60,13 @@ class AdminHome extends Component{
             file_folder: e.target.files[0]
         })
     }
-    modelOther(e){
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+
+    
     model(e){
         this.setState({
             [e.name]: e.text
         })
-    }*/
+    }
 
     logout(){
         localStorage.removeItem('user')
@@ -121,21 +106,21 @@ class AdminHome extends Component{
                                     <h6>Tips: Drag or drop a file in your stash 📁.</h6>
                                 </div>
 
-                                <form className={styles.up}>
-                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" />
+                                <div className={styles.up}>
+                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" inputValue={ e => this.model(e)} />
 
                                     <div className={styles.imageUp}>
-                                        <label>
+                                        <label style={this.state.file_folder !== '' ? {borderColor: 'green', color: 'green'} : {}}>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#6C7884">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill={this.state.file_folder !== '' ? 'green' : '#6C7884'}/>
                                         </svg>
                                         
-                                        <input type="file" name="file_folder" className={styles.file} />
-                                        </label>
+                                        <input type="file" name="file_folder" className={styles.file}          onChange={(e) => this.setFold(e)} />
+                                        </label> 
                                     </div>
                                     
-                                    <Buttona text="UPLOAD"/>
-                                </form>
+                                    <Buttona onClick={() => this.upload()} isLoading={this.state.isLoading} text="UPLOAD"/>
+                                </div>
 
                                 
                             </div>
