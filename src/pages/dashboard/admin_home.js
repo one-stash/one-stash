@@ -41,7 +41,8 @@ constructor (props){
             const res = await callApi('post', apiConfigs.apiUp+'upload', dataObj)
             if(res.status===201){
                 this.setState({
-                    dats: res.data.result
+                    file_name: '',          
+                    file_folder: ''
                 })
                 s("Your file has been uploaded successfully")
             }
@@ -107,15 +108,15 @@ constructor (props){
                                 </div>
 
                                 <div className={styles.up}>
-                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" inputValue={ e => this.model(e)} />
+                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" val={this.state.file_name} inputValue={ e => this.model(e)} />
 
                                     <div className={styles.imageUp}>
-                                        <label style={this.state.file_folder !== '' ? {borderColor: 'green', color: 'green'} : {}}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#6C7884">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill={this.state.file_folder !== '' ? 'green' : '#6C7884'}/>
+                                        <label style={this.state.file_folder !== '' ? {borderColor: '#168AE6', color: '#f5f5fa'} : {}}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke={this.state.file_folder !== '' ? '#168AE6' : '#6C7884'}>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="none"/>
                                         </svg>
                                         
-                                        <input type="file" name="file_folder" className={styles.file}          onChange={(e) => this.setFold(e)} />
+                                        <input type="file" name="file_folder" className={styles.file}          val={this.state.file_folder} onChange={(e) => this.setFold(e)} />
                                         </label> 
                                     </div>
                                     
