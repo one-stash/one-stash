@@ -4,6 +4,10 @@
     width: 100%;
     height: auto;
 
+    // @media (max-width:550px) {
+    //     overflow: hidden;
+    // }
+
     & .upload {
         height: 100vh;
         background-color: #f5f5fa;
@@ -16,6 +20,11 @@
         align-items: center;
         display: flex;
         justify-content: center;
+
+        @media (max-width:550px) {
+            display: none;
+            overflow: hidden;
+        }
 
         & .head {
             width: 100%;
@@ -120,6 +129,11 @@
         flex-direction: column;
         justify-content: flex-start;
 
+        @media (max-width:550px) {
+            width: 100%;
+            margin: 0 auto;
+        }
+
         & .head {
             width: 100%;
             // background-color: red;
@@ -131,6 +145,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 3rem;
+
+            @media (max-width:550px) {
+                height: 100px;
+            }
 
             & h3 {               
                 color: #333;                
@@ -150,9 +168,12 @@
         & .info {
             width: 100%;
             height: 200px;
-            // background-color: red;
             display: flex;
             align-items: flex-end;
+
+            @media (max-width:550px) {
+                height: 300px;
+            }
 
             & .wrap_i {                
                 width: 100%;
@@ -161,6 +182,13 @@
                 padding: 0 3rem;
                 display: flex;
                 justify-content: space-around;
+
+                @media (max-width:550px) {
+                    flex-wrap: wrap;
+                    height: 200px;
+                    justify-content: space-between;
+                    padding: 0rem;
+                }
 
                 & .i {
                     width: 250px;
@@ -171,6 +199,10 @@
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+
+                    @media (max-width:550px) {
+                        margin: 0 auto;
+                    }
 
                     & .icon {
                         height: 50px;
@@ -222,6 +254,12 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+
+            @media (max-width:550px) {
+                width: 100%; 
+                padding: 2rem 0rem;  
+                padding-top: 4.5rem; 
+            }
             
             &::-webkit-scrollbar {
                 width: 0;
@@ -230,7 +268,7 @@
             &::after {
                 content: '';
                 position: absolute;
-                padding: 1.5rem 3rem;
+                padding: 1.5rem 0;
                 background-color: #f5f5f5;
                 width: 100%;
                 top: 0;
@@ -251,6 +289,11 @@
                 transition: all .3s ease-in-out;
                 box-shadow: 0.5px 2px rgba(0, 0, 0, 0.05);
                 cursor: pointer;
+
+                @media (max-width:550px) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
 
                 &:hover {
                     transform: scale(0.95);
