@@ -50,7 +50,7 @@ class SignIn extends Component{
                 this.props.history.push('/dashboard/user/home')
             }
             else{
-                swr(res.data.message)
+                swr("Please, fill in the required fields")
             }
 
             this.setState({

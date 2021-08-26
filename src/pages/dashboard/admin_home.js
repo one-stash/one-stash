@@ -40,11 +40,11 @@ constructor (props){
             
             const res = await callApi('post', apiConfigs.apiUp+'upload', dataObj)
             if(res.status===201){
+                s("Your file has been uploaded successfully")
                 this.setState({
                     file_name: '',          
                     file_folder: ''
                 })
-                s("Your file has been uploaded successfully")
             }
             else{
                 swr("Please, you'll have to upload a file")
