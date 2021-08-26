@@ -12,6 +12,10 @@ class AdminHome extends Component{
 constructor (props){
         super(props)
 
+        this.state = {
+            navOpen: false
+        }
+    
         let user = JSON.parse(localStorage.user)
         this.state = {
             file_name: '',            
@@ -61,7 +65,6 @@ constructor (props){
             file_folder: e.target.files[0]
         })
     }
-
     
     model(e){
         this.setState({

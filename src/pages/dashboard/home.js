@@ -9,6 +9,14 @@ import styles from "../../styles/dashboard/home.module.scss";
 
 class Home extends Component{
     
+    constructor (props){
+        super(props)
+
+        this.state = {
+            open: false
+        }
+    }
+
 /*   constructor (props){
         super(props)
 
@@ -83,6 +91,20 @@ class Home extends Component{
         })
     }*/
 
+    openMobileNav(){
+        this.setState({
+            open: true
+        })
+        document.getElementsByClassName(styles.upload)[0].style.transform="scale(1)"
+    }
+    
+    closeMobileNav(){
+        this.setState({
+            open: false
+        })
+        document.getElementsByClassName(styles.upload)[0].style.transform="scale(0)"
+    }
+
 
     logout(){
         localStorage.removeItem('user')
@@ -142,6 +164,23 @@ class Home extends Component{
                             </div>
                             
                             <div className={styles.download}>
+                                
+                                <div className={styles.mHouse}>
+                                {
+                                this.state.open === false
+                                ?
+                                <div onClick={() => this.openMobileNav()} className={styles.menu}>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                :
+                                <svg className={styles.menuSvg} onClick={() => this.closeMobileNav()} width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 10.1734L22.9 0.273438L25.728 3.10144L15.828 13.0014L25.728 22.9014L22.9 25.7294L13 15.8294L3.09997 25.7294L0.271973 22.9014L10.172 13.0014L0.271973 3.10144L3.09997 0.273438L13 10.1734Z" fill="currentColor" />
+                                </svg>
+                                }
+                                </div>                   
+                                                            
                                 <div className={styles.head}>
                                     <h3>Hi Omopariola.</h3>
 
