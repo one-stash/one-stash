@@ -13,7 +13,7 @@ constructor (props){
         super(props)
 
         this.state = {
-            open: false
+            openAdmin: false
         }
     
         let user = JSON.parse(localStorage.user)
@@ -72,18 +72,18 @@ constructor (props){
         })
     }
 
-    openMobileNav(){
+    openMobile(){
         this.setState({
-            open: true
+            openAdmin: true
         })
-        document.getElementsByClassName(styles.upres)[0].style.transform="scale(1)"
+        document.getElementsByClassName(styles.upres)[0].style.transform="scale(0)"
     }
     
-    closeMobileNav() {
+    closeMobile() {
         this.setState({
-            open: false
+            openAdmin: false
         })
-        document.getElementsByClassName(styles.upres)[0].style.transform = "scale(0)"
+        document.getElementsByClassName(styles.upres)[0].style.transform = "scale(1)"
     }
 
     logout(){
@@ -92,6 +92,7 @@ constructor (props){
     }
 
     render(){
+        
         return(
             <div>
                     <div className="content-container">
@@ -146,14 +147,14 @@ constructor (props){
                             <div className={styles.download}>
                                 <div className={styles.mHouse}>
                                 {
-                                this.state.open === false
-                                ?
-                                <svg onClick={() => this.openMobileNav()} className={styles.menu} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" height="25" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                                </svg> 
-                                :
-                                <svg className={styles.menuSvg} onClick={() => this.closeMobileNav()}  viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                this.state.openAdmin === false
+                                ?                               
+                                <svg className={styles.menuSvg} onClick={() => this.openMobile()} viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13 10.1734L22.9 0.273438L25.728 3.10144L15.828 13.0014L25.728 22.9014L22.9 25.7294L13 15.8294L3.09997 25.7294L0.271973 22.9014L10.172 13.0014L0.271973 3.10144L3.09997 0.273438L13 10.1734Z" fill="currentColor" />
+                                </svg>
+                                :
+                                <svg onClick={() => this.closeMobile()} className={styles.menu} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" height="25" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
                                 </svg>
                                 }
                                 </div>
@@ -301,7 +302,7 @@ constructor (props){
                                 </div>                                
                             </div>
                             {/*responsive view for upload*/}
-                            
+
                         </div>  
                             
                     </div>
@@ -309,6 +310,7 @@ constructor (props){
             </div>
         );
     }
+    
 }
 
 export default AdminHome;
