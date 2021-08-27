@@ -180,7 +180,7 @@ class Home extends Component{
                                 </div>                   
                                                             
                                 <div className={styles.head}>
-                                    <h3>Hi Omopariola.</h3>
+                                    <h3>Hi User.</h3>
 
                                     <span onClick={() => this.logout()} className={styles.a}>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
