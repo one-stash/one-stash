@@ -95,14 +95,14 @@ class Home extends Component{
         this.setState({
             open: true
         })
-        document.getElementsByClassName(styles.upload)[0].style.transform="scale(1)"
+        document.getElementsByClassName(styles.upres)[0].style.transform="scale(1)"
     }
     
     closeMobileNav(){
         this.setState({
             open: false
         })
-        document.getElementsByClassName(styles.upload)[0].style.transform="scale(0)"
+        document.getElementsByClassName(styles.upres)[0].style.transform="scale(0)"
     }
 
 
@@ -144,7 +144,7 @@ class Home extends Component{
                                     <h6>Tips: Drag or drop a file in your stash 📁.</h6>
                                 </div>
 
-                                <form className={styles.up}>
+                                <div className={styles.up}>
                                     <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" />
 
                                     <div className={styles.imageUp}>
@@ -158,7 +158,7 @@ class Home extends Component{
                                     </div>
                                     
                                     <Buttona text="UPLOAD"/>
-                                </form>
+                                </div>
 
                                 
                             </div>
@@ -169,13 +169,11 @@ class Home extends Component{
                                 {
                                 this.state.open === false
                                 ?
-                                <div onClick={() => this.openMobileNav()} className={styles.menu}>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                                <svg onClick={() => this.openMobileNav()} className={styles.menu} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" height="25" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                </svg> 
                                 :
-                                <svg className={styles.menuSvg} onClick={() => this.closeMobileNav()} width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className={styles.menuSvg} onClick={() => this.closeMobileNav()}  viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13 10.1734L22.9 0.273438L25.728 3.10144L15.828 13.0014L25.728 22.9014L22.9 25.7294L13 15.8294L3.09997 25.7294L0.271973 22.9014L10.172 13.0014L0.271973 3.10144L3.09997 0.273438L13 10.1734Z" fill="currentColor" />
                                 </svg>
                                 }
@@ -265,8 +263,57 @@ class Home extends Component{
                                     </div>
                                 </div>
                             </div>
-                        </div>  
-                            
+
+
+                            {/*responsive view for upload*/}
+                            <div className={styles.upres}>
+                                <div className={styles.head}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
+                                    </svg>
+
+                                    <div className={styles.opt}>
+                                        <span>
+                                            <legend></legend>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                            </svg>
+                                        </span>
+
+                                        <Link>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </Link>
+                                    </div>
+                                </div>
+
+                                <div className={styles.welcome}>
+                                    <h6>Tips: Drag or drop a file in your stash 📁.</h6>
+                                </div>
+
+                                <div className={styles.up}>
+                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" />
+
+                                    <div className={styles.imageUp}>
+                                        <label>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#6C7884">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                        </svg>
+                                        
+                                        <input type="file" name="file_image" className={styles.file} />
+                                        </label>
+                                    </div>
+                                    
+                                    <Buttona text="UPLOAD"/>
+                                </div>
+
+                                
+                            </div>
+                        {/*responsive view for upload*/}
+                        </div>                               
+                        
+                        
                     </div>
                 </div>
             </div>
