@@ -29,7 +29,7 @@ constructor (props){
         if(this.state.isLoading === true){
             return
         }
-        if(this.state.file_name.trim()==='' || this.state.file_folder.trim()===''){
+        if(this.state.file_name && this.state.file_name.trim()==='' && this.state.file_folder && this.state.file_folder.trim()===''){
             return e("Please, ensure you've uploaded a file")
         }
         else{
