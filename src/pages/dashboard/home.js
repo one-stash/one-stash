@@ -15,15 +15,11 @@ class Home extends Component{
         this.state = {
             open: false
         }
-    }
 
-/*   constructor (props){
-        super(props)
-
-        let user = JSON.parse(localStorage.user)
+         let user = JSON.parse(localStorage.user)
         this.state = {
             file_name: '',            
-            file_image: '',
+            file_folder: '',
             user: user,
             isLoading: false
         }
@@ -33,8 +29,8 @@ class Home extends Component{
         if(this.state.isLoading === true){
             return
         }
-        if(this.state.file_name.trim()==='' || this.state.file_image.trim()===''){
-            return e("Please, ensure you have filled in all fields")
+        if(this.state.file_name && this.state.file_name.trim()==='' && this.state.file_folder && this.state.file_folder.trim()===''){
+            return e("Please, ensure you've uploaded a file")
         }
         else{
             this.setState({
@@ -43,30 +39,19 @@ class Home extends Component{
 
             const dataObj = new FormData()
             dataObj.append('file_name', this.state.file_name)
-            dataObj.append('file_image', this.state.file_image)
+            dataObj.append('file_folder', this.state.file_folder)
             dataObj.append('user_id', this.state.user.id)
             
-            const res = await callApi('post', apiConfigs.apiUrl+'class/create.php', dataObj)
+            const res = await callApi('post', apiConfigs.apiUp+'upload', dataObj)
             if(res.status===201){
+                s("Your file has been uploaded successfully")
                 this.setState({
-                    dats: res.data.result
+                    file_name: '',          
+                    file_folder: ''
                 })
-
-                 if(this.state.dats){
-                    let text = document.getElementById('copySection')
-                    var range = document.createRange();
-                    range.selectNode(text);
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                    
-                    navigator.clipboard.writeText(window.getSelection())
-                    
-                    s(res.data.message + ' The Invitation details have been copied to your clipboard')
-                    this.props.history.push('/all-classes')
-                }
             }
             else{
-                swr(res.data.message)
+                swr("Please, you'll have to upload a file")
             }
 
             this.setState({
@@ -75,21 +60,17 @@ class Home extends Component{
         }
     }
 
-    setImg(e){
+    setFold(e){
         this.setState({
-            file_image: e.target.files[0]
+            file_folder: e.target.files[0]
         })
     }
-    modelOther(e){
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+    
     model(e){
         this.setState({
             [e.name]: e.text
         })
-    }*/
+    }
 
     openMobileNav(){
         this.setState({
@@ -145,19 +126,19 @@ class Home extends Component{
                                 </div>
 
                                 <div className={styles.up}>
-                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" />
+                                    <InputField type="text" name="file_name" placeholder="File name" placeinside="File name" val={this.state.file_name} inputValue={ e => this.model(e)} />
 
                                     <div className={styles.imageUp}>
-                                        <label>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#6C7884">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                        <label style={this.state.file_folder !== '' ? {borderColor: '#168AE6', color: '#f5f5fa'} : {}}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke={this.state.file_folder !== '' ? '#168AE6' : '#6C7884'}>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" fill="none"/>
                                         </svg>
                                         
-                                        <input type="file" name="file_image" className={styles.file} />
-                                        </label>
+                                        <input type="file" name="file_folder" className={styles.file}          val={this.state.file_folder} onChange={(e) => this.setFold(e)} />
+                                        </label> 
                                     </div>
                                     
-                                    <Buttona text="UPLOAD"/>
+                                    <Buttona onClick={() => this.upload()} isLoading={this.state.isLoading} text="UPLOAD"/>
                                 </div>
 
                                 
