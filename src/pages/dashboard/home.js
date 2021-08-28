@@ -43,7 +43,7 @@ class Home extends Component{
             dataObj.append('user_id', this.state.user.id)
             
             const res = await callApi('post', apiConfigs.apiUp+'upload', dataObj)
-            if(res.status===201){
+            if(res.status===200){
                 s("Your file has been uploaded successfully")
                 this.setState({
                     file_name: '',          
