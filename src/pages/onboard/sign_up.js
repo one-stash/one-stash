@@ -46,7 +46,7 @@ class SignUp extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiHeroku+'register', this.state)
+            const res = await callApi('post', apiConfigs.apiHeroku+'adduser', this.state)
             if(res.status === 200){
                 s("Proceed to Login")
                 // this.props.history.push('/onboard/sign-in')
