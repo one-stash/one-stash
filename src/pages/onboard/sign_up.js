@@ -46,10 +46,10 @@ class SignUp extends Component{
                 isLoading : true
             })
 
-            const res = await callApi('post', apiConfigs.apiHeroku+'adduser', this.state)
+            const res = await callApi('post', apiConfigs.apiUrl+'ApplicationUser/AddUser', this.state)
             if(res.status === 200){
-                s("Proceed to Login")
-                // this.props.history.push('/onboard/sign-in')
+                s("User added succesfully")
+                this.props.history.push('/dashboard/admin/home')
             }
             else{
                 // swr(res.data.message)
@@ -76,7 +76,7 @@ class SignUp extends Component{
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
                             </svg>
                             <h6>1Stash</h6>
-                            <p>free</p>
+                            <p>For BAT</p>
                         </div>
 
                         <div className={styles.features}>
@@ -122,8 +122,8 @@ class SignUp extends Component{
                             </svg>
                         </Link>                        
 
-                        <Link to={url.signIn}>
-                            Login
+                        <Link>
+                            For BAT
                         </Link>
                     </div>
 

@@ -21,6 +21,7 @@ constructor (props){
             file_name: '',            
             file: '',
             user: user,
+            dats:[],
             isLoading: false
         }
     }
@@ -52,6 +53,7 @@ constructor (props){
             }
             else{
                 swr("Please, you'll have to upload a file")
+                window.location.reload(false);
             }
 
             this.setState({
@@ -59,6 +61,21 @@ constructor (props){
             })
         }
     }
+
+    async componentDidMount(){
+        const res = await callApi('post', apiConfigs.apiHeroku+'files', this.state)
+        if(res.status===200){
+            if(res.data.records){
+                for(let i = 0; i<res.data.records.length; i++)
+                this.setState({
+                    dats: res.data.records
+                })
+            }
+            
+        }
+    }
+
+    
 
     setFold(e){
         this.setState({
@@ -187,7 +204,7 @@ constructor (props){
 
                                         <div className={styles.i}>
                                             <div className={styles.icon}>
-                                                <span>5</span>
+                                                <span>{this.state.dats.length}</span>
                                             </div>
 
                                             <div className={styles.desc}>
@@ -198,63 +215,30 @@ constructor (props){
                                 </div>
 
                                 <div className={styles.stash}>
-                                    <div className={styles.folder}>
-                                        <h3>
-                                            Stash 1.
-                                        </h3>
+                                { 
+                                    this.state.dats.map((folder) =>
+                                        <div key={folder.id} className={styles.folder}>
+                                                <h3>
+                                                    {folder.file_name}
+                                                </h3>
+                                                    
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                                                    </svg>
+                                                </span>
+                                            </div>
                                         
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div className={styles.folder}>
-                                        <h3>
-                                            Stash 1.
-                                        </h3>
-                                        
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div className={styles.folder}>
-                                        <h3>
-                                            Stash 1.
-                                        </h3>
-                                        
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                            </svg>
-                                        </span>
-                                    </div>
+                                        )
+                                    }
 
-                                    <div className={styles.folder}>
-                                        <h3>
-                                            Stash 1.
-                                        </h3>
+                                    {
+                                    this.state.dats.length < 1 
                                         
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                            </svg>
-                                        </span>
-                                    </div>
-
-                                    <div className={styles.folder}>
-                                        <h3>
-                                            Stash 1.
-                                        </h3>
+                                        && 
                                         
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                                            </svg>
-                                        </span>
-                                    </div>
+                                        <p>You've not uploaded any file yet.</p>
+                                    }                                 
 
                                 </div>
                             </div>
